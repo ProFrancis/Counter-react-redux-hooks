@@ -35,7 +35,7 @@ const App = () => {
     <div className="App">
       <header className="App-header">
       <h1>COUNTER</h1>
-      <p>{counter.CounterStart}</p>
+      <span>{counter.CounterStart}</span>
       {!counter.counterOn ? 
           counter.CounterStart > 0 ?
             <button onClick={handleStart}>Restart</button>

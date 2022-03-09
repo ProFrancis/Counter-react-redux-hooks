@@ -5,7 +5,7 @@ const actionStop = () => { return { type: COUNTER.STOP_COUNTER }}
 const actionReset = () => { return { type: COUNTER.RESET_COUNTER }}
 
 
-export const startCounter = (timerId) => async dispatch => {
+export const startCounter = (timerId) => dispatch => {
   try{
     dispatch(actionStart(timerId))
   }catch(error){
@@ -13,7 +13,7 @@ export const startCounter = (timerId) => async dispatch => {
   }
 }
 
-export const stopCounter = () => async dispatch => {
+export const stopCounter = () => dispatch => {
   try{
     dispatch(actionStop())
   }catch(error){
@@ -21,7 +21,7 @@ export const stopCounter = () => async dispatch => {
   }
 }
 
-export const resetCounter = () => async dispatch => {
+export const resetCounter = () => dispatch => {
   try{
     dispatch(actionReset())
   }catch(error){
