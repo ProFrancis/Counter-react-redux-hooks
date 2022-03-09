@@ -1,11 +1,11 @@
 import { COUNTER } from "../types/counter.type"
 
-const actionStart = () => { return { type: COUNTER.START_COUNTER }}
+const actionStart = (payload) => { return { type: COUNTER.START_COUNTER, payload }}
 const actionStop = () => { return { type: COUNTER.STOP_COUNTER }}
 
-export const startCounter = () => async dispatch => {
+export const startCounter = (timerId) => async dispatch => {
   try{
-    dispatch(actionStart())
+    dispatch(actionStart(timerId))
   }catch(error){
     //
   }

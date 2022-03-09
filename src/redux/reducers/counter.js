@@ -1,12 +1,28 @@
 import { COUNTER } from "../types/counter.type"
 
-export default function counter(state = 0, action){
+const initialState = {
+  counterOn: false,
+  CounterStart: 0,
+  CounterTime: 0
+};
+
+export default function counter(state = initialState, action){
   switch(action.type)
   {
     case COUNTER.START_COUNTER:
-      return state + 1
+      return {
+        ...state,
+        id: action.payload,
+        counterOn: true,
+        CounterStart: state.CounterStart + 1,
+        CounterTime: state.CounterTime
+      }
     case COUNTER.STOP_COUNTER:
-      // 
+      return {
+        ...state,
+        counterOn: false,
+        CounterStart: state.CounterStart
+      }
     default:
       return state
   }
