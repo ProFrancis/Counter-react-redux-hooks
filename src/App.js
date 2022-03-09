@@ -8,7 +8,7 @@ import './App.css';
 
 const App = () => {
   const counter = useSelector((state) => state.counter)
-  console.log(counter.counterOn);
+
   const dispatch = useDispatch();
 
   const handleStart = () => {
@@ -17,9 +17,18 @@ const App = () => {
     }, 50)
   }
 
-  const stop = () => {
+  const clearTimer = () => {
     clearInterval(counter.id)
+  }
+
+  const stop = () => {
+    clearTimer();
     dispatch(actionsCounter.stopCounter())
+  }
+
+  const reset = () => {
+    clearTimer();
+    dispatch(actionsCounter.resetCounter())
   }
 
   return (
@@ -28,9 +37,15 @@ const App = () => {
       <h1>COUNTER</h1>
       <p>{counter.CounterStart}</p>
       {!counter.counterOn ? 
-        <button onClick={handleStart}>start</button>
+          counter.CounterStart > 0 ?
+            <button onClick={handleStart}>Restart</button>
+            :
+            <button onClick={handleStart}>start</button>
         :
-        <button onClick={stop}>stop</button>
+          <div>
+            <button onClick={stop}>stop</button>
+            <button onClick={reset}>reset</button>
+          </div>
       }
       </header>
     </div>

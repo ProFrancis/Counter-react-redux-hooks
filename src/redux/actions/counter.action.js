@@ -2,6 +2,8 @@ import { COUNTER } from "../types/counter.type"
 
 const actionStart = (payload) => { return { type: COUNTER.START_COUNTER, payload }}
 const actionStop = () => { return { type: COUNTER.STOP_COUNTER }}
+const actionReset = () => { return { type: COUNTER.RESET_COUNTER }}
+
 
 export const startCounter = (timerId) => async dispatch => {
   try{
@@ -19,7 +21,16 @@ export const stopCounter = () => async dispatch => {
   }
 }
 
+export const resetCounter = () => async dispatch => {
+  try{
+    dispatch(actionReset())
+  }catch(error){
+    //
+  }
+}
+
 export const actionsCounter = {
   startCounter,
-  stopCounter
+  stopCounter,
+  resetCounter
 }
